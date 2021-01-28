@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pbStyles.css" />
+    <title>PATCH-BAE</title>
+</head>
+<body>
+    <!-- TITLE AREA -->
+    <div class=titleDiv id="titleDivId">
+        <h1>PATCH BAE</h1>
+        <p>OverHaul</p>
+    </div>
+
+<!-- LOGIN AREA  -->
+<div class="navDiv">
+ NAV AREA
+</div>
+<!-- NEW AND SAVE AREA -->
+<div class="newSaveDiv">
+    <button>NEW</button><button>SAVE</button>
+</div>
+
+<!-- COLOR SORT AREA -->
+<div id="colorSortDivId" class="colorSortDiv">
+    <button>NO COLOR</button><br /><button>BROWN</button><button>RED</button><button>ORANGE</button><button>YELLOW</button><button>GREEN</button><button>BLUE</button>
+</div>
+
+<!-- TABLE AREA  -->
+<div id="tableDivId" class="tableDiv">TABLE DIV</div>
+
+<!-- CONNFIRM AREA -->
+<div id="confirmModalId" class="confirmModal modal">
+    <h3>Just Gotta Make Sure...</h3>
+    <p id="confirmMessageId">Confirm Message</p>
+    <button>NEVERMIND</button><button>I'M SURE</button>
+</div>
+<!-- ERROR MODAL -->
+<div id="errorModalId" class="errorModal modal">
+    <div id="errorDivId" class="errorDiv">ERROR MESSAGES HERE</div>
+  
+        <button>GOT IT</button>
+    
+</div>
+<!-- SIGNUP MODAL -->
+<div id="signupModalId" class="signupModal modal">SIGNUP MODAL
+    <form id="signupFormId">
+        
+    </form>
+</div>
+<!-- LOGIN MODAL -->
+<div id="loginModalId" class="loginModal modal">LOGIN MODAL
+    <form id="loginFormId">
+
+    </form>
+</div>
+<!-- ACCOUNT MODAL  -->
+<div id="accountModalId" class="accountModal modal">
+    <div id="accountHeaderId" class="accountHeader">ACCOUNT HEADER DIV</div>
+    <div id="accountControlId" class="accountControl">ACCOUNT CONTROL DIV</div>
+    <div id="savedFileListId" class="savedFileList">SAVED FILE LIST DIV</div>
+</div>
+
+
+
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src="pbPatch.js"></script>
+    <script type="text/javascript" src="pbFirebase.js"></script>
+    <script type="text/javascript" src="pbConstants.js"></script>
+    <script type="text/javascript" src="pbFunctions.js"></script>
+    <script type="text/javascript" src="pbFlow.js"></script>
+
+</body>
+</html>
