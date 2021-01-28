@@ -17,15 +17,54 @@
 <div class="navDiv">
  NAV AREA
 </div>
-<!-- NEW AND SAVE AREA -->
+<!-- NEW AND DOWNLOAD AREA -->
 <div class="newSaveDiv">
-    <button>NEW</button><button>SAVE</button>
+    <button>NEW</button><button>GET PDF</button>
 </div>
 
 <!-- COLOR SORT AREA -->
 <div id="colorSortDivId" class="colorSortDiv">
     <button>NO COLOR</button><br /><button>BROWN</button><button>RED</button><button>ORANGE</button><button>YELLOW</button><button>GREEN</button><button>BLUE</button>
 </div>
+
+<!-- EDIT AREA -->
+
+<div id="editFormDivId" class="editFormDiv">
+    <form id="editFormId" action="">
+        <h2 id="editHeaderId">EDIT PARAMETERS:</h2>
+        <label for="nameId">CHANNEL NAME:</label>
+        <input type="text" id="nameId" name="name" value="">
+        <br />
+        
+        
+        <label for="brownId"><input type="radio" id="brownId" name="color" value="brown">Brown</label>
+        <label for="redId"><input type="radio" id="redId" name="color" value="red">Red</label>
+        <label for="orangeId"><input type="radio" id="orangeId" name="color" value="orange">Orange</label>
+         <label for="yellowId"><input type="radio" id="yellowId" name="color" value="yellow">Yellow</label>
+        <label for="greenId"><input type="radio" id="greenId" name="color" value="green">Green</label>
+        <label for="blueId"><input type="radio" id="blueId" name="color" value="blue">Blue</label>
+        <label for="noneId"><input type="radio" id="noneId" name="color" value="none">None</label><br />
+
+        <label for="patchNumberId">SUB NUMBER:</label>
+        <input type="number" id="patchNumberId" name="patchNumber" min="0" max="24">
+
+       <div id="inputOnlyId" class="inputOnly">
+        <label for="micId">MIC/DI:</label>
+        <input type="text" id="micId" name="mic" value="">
+        <br />
+        <label for="standId">STAND:</label>
+        <input type="text" id="standId" name="stand" value="">
+        <br />
+    </div>
+    <hr />
+        <label for="notesId">NOTES:</label>
+        <input type="text" id="notesId" name="notes" value="">
+        <br />
+        <input type="submit" id="editSubmitId">
+      </form>
+</div>
+
+
 
 <!-- TABLE AREA  -->
 <div id="tableDivId" class="tableDiv">TABLE DIV</div>
@@ -61,7 +100,6 @@
     <div id="accountControlId" class="accountControl">ACCOUNT CONTROL DIV</div>
     <div id="savedFileListId" class="savedFileList">SAVED FILE LIST DIV</div>
 </div>
-
 
 
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
