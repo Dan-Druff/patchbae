@@ -56,3 +56,34 @@ width: 20%;
 .editFormDiv{
     display: none;
 }
+.modal{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    right: 5%;
+    background-color: yellow;
+}
+.optionsModal{
+    z-index: 1;
+    display: none;
+}
+.confirmModal{
+    z-index: 2;
+    display: none;
+}
+.errorModal{
+    z-index: 3;
+    display: none;
+}
+.signupModal{
+    z-index: 1;
+    display: none;
+}
+.loginModal{
+    z-index: 1;
+    display: none;
+}
+.accountModal{
+    z-index: 1;
+    display: none;
+}

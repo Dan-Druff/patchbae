@@ -13,37 +13,37 @@
         <p>OverHaul</p>
     </div>
 
-<!-- LOGIN AREA  -->
+<!-- LOGIN NAV AREA  -->
 <div class="navDiv">
   
     <ul class="navUl">
-        <li class="navButt loggedIn"><button>ACCOUNT</button></li>
+        <li class="navButt loggedIn"><button id="accountButtonId">ACCOUNT</button></li>
    
-        <li class="navButt loggedIn"><button>LOGOUT</button></li>
+        <li class="navButt loggedIn"><button id="logoutButtonId">LOGOUT</button></li>
 
    
-        <li class="navButt loggedOut"><button>LOGIN</button></li>
+        <li class="navButt loggedOut"><button id="loginButtonId">LOGIN</button></li>
 
        
-        <li class="navButt loggedOut"><button>SIGNUP</button></li>
+        <li class="navButt loggedOut"><button id="signupButtonId">SIGNUP</button></li>
 
   
-        <li class="navButt loggedIn"><button>SAVE</button></li>
+        <li class="navButt loggedIn"><button id="saveButtonId">SAVE</button></li>
 
        
     </ul>
 </div>
 <!-- NEW AND DOWNLOAD AREA -->
 <div class="newSaveDiv">
-    <button>NEW</button><button>GET PDF</button>
+    <button id="newButtonId">NEW</button><button id="getPdfButton">GET PDF</button>
 </div>
 <!-- COLOR SORT AREA -->
 <div id="colorSortDivId" class="colorSortDiv">
-    <button>NO COLOR</button><br /><button>BROWN</button><button>RED</button><button>ORANGE</button><button>YELLOW</button><button>GREEN</button><button>BLUE</button>
+    <button id="whiteSortId">NO COLOR</button><br /><button id="brownSortId">BROWN</button><button id="redSortId">RED</button><button id="orangeSortId">ORANGE</button><button id="yellowSortId">YELLOW</button><button id="greenSortId">GREEN</button><button id="blueSortId">BLUE</button>
 </div>
 <!-- EDIT AREA -->
 <div id="editFormDivId" class="editFormDiv">
-    <form id="editFormId" action="">
+    <form id="editFormId">
         <h2 id="editHeaderId">EDIT PARAMETERS:</h2>
         <label for="nameId">CHANNEL NAME:</label>
         <input type="text" id="nameId" name="name" value="">
@@ -80,9 +80,10 @@
 <div id="tableDivId" class="tableDiv">TABLE DIV</div>
 <!-- OPTIONS MODAL  -->
 <div id="optionsDivId" class="optionsModal modal">
-    <form id="optionsFormId" action="javascript:optionsSubmitButton()"><br />
+    <button id="optionsExitButtonId">EXIT</button>
+    <form id="optionsFormId"><br />
         
-        <button id="exitButtonId">EXIT</button><br />
+        
         <h2>Select Your Patch Sheet Options:</h2><hr /><br />
         <label for="sessionName">SESSION NAME:</label>
         <input type="text" id="sessionNameId" name="sessionName" value=""><br /><br />
@@ -113,14 +114,14 @@
 <!-- CONNFIRM MODAL -->
 <div id="confirmModalId" class="confirmModal modal">
     <h3>Just Gotta Make Sure...</h3>
-    <p id="confirmMessageId">Confirm Message</p>
-    <button>NEVERMIND</button><button>I'M SURE</button>
+    <div id="confirmMessageDivId"></div>
+    <button id="nevermindButtonId">NEVERMIND</button><button id="imSureButtonId">I'M SURE</button>
 </div>
 <!-- ERROR MODAL -->
 <div id="errorModalId" class="errorModal modal">
-    <div id="errorDivId" class="errorDiv">ERROR MESSAGES HERE</div>
+    <div id="errorDivId" class="errorDiv"></div>
   
-        <button>GOT IT</button>
+        <button id="gotItButtonId">GOT IT</button>
     
 </div>
 <!-- SIGNUP MODAL -->

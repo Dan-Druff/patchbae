@@ -35,9 +35,9 @@ function Patch(user, inputs, outputs, name, notes){
 
     //CREATE INPUT ARRAYS
     for(i=0; i<inputs; i++){
-        this.inChNumArray.push("");
+        this.inChNumArray.push(i+1);
         this.inChNameArray.push("");
-        this.inChColorArray.push("");
+        this.inChColorArray.push(white);
         this.inChMicArray.push("");
         this.inChPatchArray.push("");
         this.inChStandArray.push("");
@@ -47,9 +47,9 @@ function Patch(user, inputs, outputs, name, notes){
 
     //CREATE OUTPUT ARRAys
     for (o=0; o<outputs; o++){
-        this.outChNumArray.push("");
+        this.outChNumArray.push(o+1);
         this.outChNameArray.push("");
-        this.outChColorArray.push("");
+        this.outChColorArray.push(white);
         this.outChPatchArray.push("");
         this.outChNotesArray.push("");
 
