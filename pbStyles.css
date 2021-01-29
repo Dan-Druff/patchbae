@@ -14,10 +14,10 @@ table{
 }
 th{
     text-align: left;
-    padding: 2px;
+ 
 }
 td{
-    padding: 2px;
+ 
     text-align: left;
     border: 1px solid black;
 }
@@ -45,8 +45,14 @@ tr{
 
 }
 .outNameCol{
-width: 70%;
+width: 60%;
 }
 .outPatchCol{
-    width: 22%;
+    width: 12%;
+}
+.outNotesCol{
+width: 20%;
+}
+.editFormDiv{
+    display: none;
 }

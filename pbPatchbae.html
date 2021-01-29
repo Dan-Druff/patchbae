@@ -37,14 +37,11 @@
 <div class="newSaveDiv">
     <button>NEW</button><button>GET PDF</button>
 </div>
-
 <!-- COLOR SORT AREA -->
 <div id="colorSortDivId" class="colorSortDiv">
     <button>NO COLOR</button><br /><button>BROWN</button><button>RED</button><button>ORANGE</button><button>YELLOW</button><button>GREEN</button><button>BLUE</button>
 </div>
-
 <!-- EDIT AREA -->
-
 <div id="editFormDivId" class="editFormDiv">
     <form id="editFormId" action="">
         <h2 id="editHeaderId">EDIT PARAMETERS:</h2>
@@ -53,13 +50,13 @@
         <br />
         
         
-        <label for="brownId"><input type="radio" id="brownId" name="color" value="brown">Brown</label>
-        <label for="redId"><input type="radio" id="redId" name="color" value="red">Red</label>
-        <label for="orangeId"><input type="radio" id="orangeId" name="color" value="orange">Orange</label>
-         <label for="yellowId"><input type="radio" id="yellowId" name="color" value="yellow">Yellow</label>
-        <label for="greenId"><input type="radio" id="greenId" name="color" value="green">Green</label>
-        <label for="blueId"><input type="radio" id="blueId" name="color" value="blue">Blue</label>
-        <label for="noneId"><input type="radio" id="noneId" name="color" value="none">None</label><br />
+        <label for="brownId"><input type="radio" id="brownId" name="color" value="brown">BROWN</label>
+        <label for="redId"><input type="radio" id="redId" name="color" value="red">RED</label>
+        <label for="orangeId"><input type="radio" id="orangeId" name="color" value="orange">ORANGE</label>
+         <label for="yellowId"><input type="radio" id="yellowId" name="color" value="yellow">YELLOW</label>
+        <label for="greenId"><input type="radio" id="greenId" name="color" value="green">GREEN</label>
+        <label for="blueId"><input type="radio" id="blueId" name="color" value="blue">BLUE</label>
+        <label for="noneId"><input type="radio" id="noneId" name="color" value="none">NONE</label><br />
 
         <label for="patchNumberId">SUB NUMBER:</label>
         <input type="number" id="patchNumberId" name="patchNumber" min="0" max="24">
@@ -79,13 +76,41 @@
         <input type="submit" id="editSubmitId">
       </form>
 </div>
-
-
-
 <!-- TABLE AREA  -->
 <div id="tableDivId" class="tableDiv">TABLE DIV</div>
-
-<!-- CONNFIRM AREA -->
+<!-- OPTIONS MODAL  -->
+<div id="optionsDivId" class="optionsModal modal">
+    <form id="optionsFormId" action="javascript:optionsSubmitButton()"><br />
+        
+        <button id="exitButtonId">EXIT</button><br />
+        <h2>Select Your Patch Sheet Options:</h2><hr /><br />
+        <label for="sessionName">SESSION NAME:</label>
+        <input type="text" id="sessionNameId" name="sessionName" value=""><br /><br />
+        HOW MANY INPUTS? <label class="inputSelectButton"><input type="radio" name="inputs" value="8">8</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="12">12</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="16">16</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="24">24</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="32">32</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="48">48</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="56">56</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="64">64</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="96">96</label>
+        <label class="inputSelectButton"><input type="radio" name="inputs" value="128">128</label><br /><br />
+        HOW MANY OUTPUTS? <label class="outputSelectButton"><input type="radio" name="outputs" value="0">0</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="4">4</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="8">8</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="12">12</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="16">16</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="24">24</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="32">32</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="48">48</label>
+        <label class="outputSelectButton"><input type="radio" name="outputs" value="128">128</label><br /><br />
+        <label>SESSION NOTES:<textarea id="sessionNotesId" name="sessionNotes"></textarea></label>
+       <br /><br />
+       <input type="submit" id="optionsSubmitId">
+    </form>
+</div>
+<!-- CONNFIRM MODAL -->
 <div id="confirmModalId" class="confirmModal modal">
     <h3>Just Gotta Make Sure...</h3>
     <p id="confirmMessageId">Confirm Message</p>
