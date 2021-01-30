@@ -89,6 +89,13 @@ const optionsForm = document.getElementById("optionsFormId");
 const optionsExitButton = document.getElementById("optionsExitButtonId");
 
 const editForm = document.getElementById("editFormId");
+const loginForm = document.getElementById("loginFormId");
+const signupForm = document.getElementById("signupFormId");
+
+const loggedOutLinks = document.querySelectorAll('.loggedOut');
+const loggedInLinks = document.querySelectorAll('.loggedIn');
+
+const accountHeader = document.getElementById("accountHeaderId");
 
 var brownSort = new Patch("brown", 0, 0, "brown", "");
 var redSort = new Patch("red", 0, 0, "red", "");
@@ -116,3 +123,6 @@ var prevPatchColor = "";
 var prevPatchNumber = 0;
 var currentState = appState.none;
 var selectedColor = white;
+var userId = "";
+var userEmail = "";
+var loadedPatchesArray = [];

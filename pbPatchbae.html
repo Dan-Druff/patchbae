@@ -8,11 +8,10 @@
 </head>
 <body>
     <!-- TITLE AREA -->
-    <div class=titleDiv id="titleDivId">
+<div class=titleDiv id="titleDivId">
         <h1>PATCH BAE</h1>
         <p>OverHaul</p>
-    </div>
-
+</div>
 <!-- LOGIN NAV AREA  -->
 <div class="navDiv">
   
@@ -77,7 +76,7 @@
       </form>
 </div>
 <!-- TABLE AREA  -->
-<div id="tableDivId" class="tableDiv">TABLE DIV</div>
+<div id="tableDivId" class="tableDiv"></div>
 <!-- OPTIONS MODAL  -->
 <div id="optionsDivId" class="optionsModal modal">
     <button id="optionsExitButtonId">EXIT</button>
@@ -125,30 +124,78 @@
     
 </div>
 <!-- SIGNUP MODAL -->
-<div id="signupModalId" class="signupModal modal">SIGNUP MODAL
+<div id="signupModalId" class="signupModal modal">
     <form id="signupFormId">
+        <div class="inputField">
+            <input type="email" id="signupEmailId" required />
+            <label for="signupEmail">E-Mail Address</label>
+        </div>
+        <div class="inputField">
+            <input type="password" id="signupPassword1Id" required />
+            <label for="signupPassword1">Password</label>
+        </div>
+        <div class="inputField">
+            <input type="password" id="signupPassword2Id" required />
+            <label for="signupPassword2">Confirm Password</label>
+        </div>
+        <button class="buttonClass">SIGNUP</button>
         
     </form>
 </div>
 <!-- LOGIN MODAL -->
-<div id="loginModalId" class="loginModal modal">LOGIN MODAL
+<div id="loginModalId" class="loginModal modal">
     <form id="loginFormId">
-
+        <div class="inputField">
+            <input type="email" id="loginEmailId" required />
+            <label for="loginEmailId">E-Mail Address</label>
+        </div>
+        <div class="inputField">
+            <input type="password" id="loginPasswordId" required />
+            <label for="loginPasswordId">Password</label>
+        </div>
+        <button class="buttonClass">LOGIN</button>
     </form>
 </div>
 <!-- ACCOUNT MODAL  -->
 <div id="accountModalId" class="accountModal modal">
-    <div id="accountHeaderId" class="accountHeader">ACCOUNT HEADER DIV</div>
+    <div id="accountHeaderId" class="accountHeader"></div>
     <div id="accountControlId" class="accountControl">ACCOUNT CONTROL DIV</div>
     <div id="savedFileListId" class="savedFileList">SAVED FILE LIST DIV</div>
 </div>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
 
+
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyDIaHC-8_hU0E8Lwf6njgnHHeEzwgL72M8",
+      authDomain: "patchbae-d1901.firebaseapp.com",
+      projectId: "patchbae-d1901",
+      storageBucket: "patchbae-d1901.appspot.com",
+      messagingSenderId: "593365643403",
+      appId: "1:593365643403:web:7f63b81e7fb8230baa248e",
+      measurementId: "G-FX8YCLYVPT"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    
+const auth = firebase.auth();
+const db  = firebase.firestore();
+
+  </script>
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script type="text/javascript" src="pbPatch.js"></script>
-    <script type="text/javascript" src="pbFirebase.js"></script>
+ 
     <script type="text/javascript" src="pbConstants.js"></script>
     <script type="text/javascript" src="pbFunctions.js"></script>
+    <script type="text/javascript" src="pbFirebase.js"></script>
     <script type="text/javascript" src="pbFlow.js"></script>
 
 </body>

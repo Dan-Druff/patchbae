@@ -390,7 +390,24 @@ function killModals(){
     accountDiv.style.display = "none";
     errorDiv.style.display = "none";
     confirmDiv.style.display = "none";
+    signupForm.reset();
+    loginForm.reset();
+    optionsForm.reset();
+}
+function setupUi(user){
 
+    if(user){
+
+        loggedInLinks.forEach(item => item.style.display = 'inline');
+        loggedOutLinks.forEach(item => item.style.display = 'none');
+        console.log("DO LOGGED IN UI STUFF", user.email);
+
+    }else{
+        loggedInLinks.forEach(item => item.style.display = 'none');
+        loggedOutLinks.forEach(item => item.style.display = 'inline');
+        console.log("DO LOGGED OUT UI STUFF");
+    }
+   
 }
 newButton.onclick = function(){
     currentState = appState.setup;
@@ -408,7 +425,12 @@ accountDiv.style.display = "block";
 };
 
 logoutButton.onclick = function(){
-console.log("LOGOUT BUTT");
+    auth.signOut().then(() => {
+        console.log("LOGOUT BUTT");
+
+    });
+
+
 };
 
 saveButton.onclick = function(){
@@ -626,7 +648,7 @@ for(o=0; o<chosenOutputs.length; o++){
 
 
 
-var tempPatch = new Patch("",tempInputs,tempOutputs,sessionName,sessionNotes);
+let tempPatch = new Patch("",tempInputs,tempOutputs,sessionName,sessionNotes);
 workingObject.clearPatch();
 workingObject = tempPatch;
 console.log(workingObject);
@@ -738,3 +760,43 @@ if(prevPatchNumber == result.patchNumberId && prevPatchColor == colorString){
 
 
 })
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log("signupForm Button");
+    const email = signupForm['signupEmailId'].value;
+    const password1 = signupForm['signupPassword1Id'].value;
+    const password2 = signupForm['signupPassword2Id'].value;
+
+    auth.createUserWithEmailAndPassword(email, password1).then(cred => {
+        console.log("SUCCES CREATING USER get uid here" + cred);
+        return db.collection('users').doc(cred.user.uid).set({
+            testField: "testData"
+        })
+    }).then(() => {
+        console.log("FINISHED SETTING USER UID DATA");
+    });
+
+})
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log("loginForm Submit button");
+    const email = loginForm['loginEmailId'].value;
+    const password = loginForm['loginPasswordId'].value;
+
+    auth.signInWithEmailAndPassword(email, password).then(cred => {
+       console.log(cred.user.uid);
+       // GET USER DOCUMENT HERE
+       return db.collection('users').doc(cred.user.uid).get().then(doc => {
+           console.log("HERE IS RETREIVED DATA: " + doc.data().testField);
+           storePatchToDataBase();
+       })
+    });
+})
+
+function storePatchToDataBase(patch){
+    let pRef = db.collection('users').doc('CZwYsfJvwgZTjEuqPma3L2tHnPG3').collection('ppp');
+  let myUser = auth.currentUser.uid;
+console.log(workingObject.dateCreated);
+console.log(myUser + pRef);
+db.collection('users').doc
+}
