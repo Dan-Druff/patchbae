@@ -1,7 +1,7 @@
 console.log("HI FROM PBflow");
 
 
-var sampleObject = new Patch("working", 0, 0, "Welcome", "");
+
 
 
 sampleObject.inChNumArray = [1, 2, 3, 4];

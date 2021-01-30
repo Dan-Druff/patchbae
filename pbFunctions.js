@@ -1,4 +1,25 @@
 console.log("HI FROM PBfunctions");
+function signupErrorCheck(e1, p1, p2){
+let errorVar = false;
+console.log("errorVar is: " + errorVar);
+// DO PASSWORD ERROR CHECKS HERER
+
+    return errorVar;
+}
+function displayError (message){
+
+
+let theMessage = `
+<h2>Error Time...</h2><br />
+<p>${message}</p>
+`;
+errorDiv.style.display = "block";
+errorMessageArea.innerHTML = theMessage;
+
+
+}
+
+
 function incrementDbPatchCount(){
 console.log("IN INCREMENT DB FUNCTION");
     usersSavedPatches++;    
@@ -15,6 +36,7 @@ console.log("IN INCREMENT DB FUNCTION");
     .catch(function(error) {
         // The document probably doesn't exist.
         console.error("Error updating PATCHCOUNT document: ", error);
+        displayError(error);
     });
 }
 function loadPatchesArrayFromDatabase(data){
@@ -338,7 +360,14 @@ switch (workingObject.outChColorArray[selectedChannel - 1]) {
 
     return false
 }
+function loadFileClick(row){
 
+console.log("LOAD FILE CLICK. Selected Row is: " + row);
+killModals();
+populateTable(loadedPatchesArray[row]);
+return false
+
+}
 function sortPatches (){
 
 brownSort.clearPatch();
@@ -506,6 +535,7 @@ function setupUi(user){
         loggedInLinks.forEach(item => item.style.display = 'none');
         loggedOutLinks.forEach(item => item.style.display = 'inline');
         console.log("DO LOGGED OUT UI STUFF");
+        populateTable(sampleObject);
     }
    
 }
@@ -522,6 +552,32 @@ loginDiv.style.display = "block";
 };
 accountButton.onclick = function(){
 accountDiv.style.display = "block";
+
+//   NEED TO LIST A BUTTON WITH ID NUMBER SOMEHOW TO LOAD FILE
+
+let theHtml = "";
+
+
+
+for(i=0; i<loadedPatchesArray.length; i++){
+
+let nanoSeconds = loadedPatchesArray[i].dateCreated.toString();
+let stringNum = i.toString;
+
+theHtml += "<h2>WASSUP DOGS</h2><br /><p>Name is: ";
+theHtml += loadedPatchesArray[i].name;
+theHtml += "</p><p>And Date Created is: "
+theHtml += nanoSeconds;
+theHtml += "</p>";
+theHtml += "<button onclick='return loadFileClick("
+theHtml += i;
+theHtml += ");'>Select</button><br /><hr />"
+}
+
+
+
+savedFileListDiv.innerHTML = theHtml;
+
 };
 
 logoutButton.onclick = function(){
@@ -868,6 +924,14 @@ signupForm.addEventListener('submit', (e) => {
     const password1 = signupForm['signupPassword1Id'].value;
     const password2 = signupForm['signupPassword2Id'].value;
 
+let errorCheck = signupErrorCheck(email, password1, password2);
+
+
+
+
+if(errorCheck){
+displayError("Something's wrong with the email or password. Try again. Password must be 6 characters...");
+}else{
 
     // CREATE USER WITH PATCH COUNT OF 0
     auth.createUserWithEmailAndPassword(email, password1).then(cred => {
@@ -882,6 +946,12 @@ signupForm.addEventListener('submit', (e) => {
 
 
     });
+
+}
+
+
+
+
 
 })
 loginForm.addEventListener('submit', (e) => {
@@ -932,6 +1002,7 @@ loginForm.addEventListener('submit', (e) => {
        .catch(function(error) {
            //THROW TO ERROR DIV HERE IF I WANT
            console.log("Error getting documents: ", error);
+           displayError(error);
        });
    
 
