@@ -1,17 +1,22 @@
 console.log("HI FROM PBflow");
 
-workingObject.name = "Dan's Test Patch Object Name";
-workingObject.inChNumArray = [1, 2, 3, 4];
-workingObject.inChNameArray = ["Kick", "snare", "Hats", "Bass"];
-workingObject.inChColorArray = [blue, green, white, red];
-workingObject.inChMicArray = ["57", "57", "81", "91"];
-workingObject.inChStandArray = ["Short", "Short", "Tall", "Tall"];
-workingObject.inChNotesArray = ["Short", "Short", "Tall", "Tall"];
-workingObject.inChPatchArray = [2,3,4,5];
-workingObject.outChNumArray = [1,2,3,4];
-workingObject.outChColorArray = [orange, yellow, brown, red];
-workingObject.outChPatchArray = [8,12,34,5];
-workingObject.outChNotesArray = ["Short", "Short", "Tall", "Tall"];
 
-workingObject.outChNameArray = ["Left", "Right", "Center", "Fill"];
-populateTable(workingObject);
+var sampleObject = new Patch("working", 0, 0, "Welcome", "");
+
+
+sampleObject.inChNumArray = [1, 2, 3, 4];
+sampleObject.inChNameArray = ["Welcome", "To", "Patch", "Bae"];
+sampleObject.inChColorArray = [blue, green, white, red];
+sampleObject.inChMicArray = ["57", "57", "81", "91"];
+sampleObject.inChStandArray = ["Short", "Short", "Tall", "Tall"];
+sampleObject.inChNotesArray = ["Short", "Short", "Tall", "Tall"];
+sampleObject.inChPatchArray = [1,2,9,10];
+sampleObject.outChNumArray = [1,2,3,4];
+sampleObject.outChColorArray = [orange, yellow, brown, red];
+sampleObject.outChPatchArray = [1,2,4,4];
+sampleObject.outChNotesArray = ["You", "Are", "So", "Coool"];
+sampleObject.outChNameArray = ["Left", "Right", "Sub", "Fill"];
+
+populateTable(sampleObject);
+
+workingObject = sampleObject;

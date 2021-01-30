@@ -104,7 +104,8 @@ var yellowSort = new Patch("yellow", 0, 0, "yellow", "");
 var greenSort = new Patch("green", 0, 0, "green", "");
 var blueSort = new Patch("blue", 0, 0, "blue", "");
 var whiteSort = new Patch("none", 0, 0, "none", "");
-var workingObject = new Patch("working", 0, 0, "working", "");
+var workingObject = new Patch("working", 0, 0, "", "");
+
 
 const brown = "#a18948";
 const red = "#f74f4f";
@@ -126,3 +127,5 @@ var selectedColor = white;
 var userId = "";
 var userEmail = "";
 var loadedPatchesArray = [];
+var usersSavedPatches = 0;
+var userEmail = "";

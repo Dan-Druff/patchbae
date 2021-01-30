@@ -1,6 +1,103 @@
 console.log("HI FROM PBfunctions");
+function incrementDbPatchCount(){
+console.log("IN INCREMENT DB FUNCTION");
+    usersSavedPatches++;    
+
+    var patchCountRef = db.collection('users/' + userId + '/patchCount').doc("count");
+
+    // Set the "capital" field of the city 'DC'
+    return patchCountRef.update({
+        numberOfSavedPatches: usersSavedPatches
+    })
+    .then(function() {
+        console.log("PATCHCOUNT Document successfully updated!");
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating PATCHCOUNT document: ", error);
+    });
+}
+function loadPatchesArrayFromDatabase(data){
 
 
+
+var tempObject = new Patch(data.user, data.inputs, data.outputs, data.name, data.notes);
+tempObject.dateCreated = data.dateCreated;
+tempObject.dateModified = data.dateModified;
+tempObject.id = data.id;
+tempObject.inChNumArray = data.inChNumArray;
+tempObject.inChNameArray = data.inChNameArray;
+tempObject.inChColorArray = data.inChColorArray;
+tempObject.inChPatchArray = data.inChPatchArray;
+tempObject.inChMicArray = data.inChMicArray;
+tempObject.inChStandArray = data.inChStandArray;
+tempObject.inChNotesArray = data.inChNotesArray;
+tempObject.outChNameArray = data.outChNameArray;
+tempObject.outChNumArray = data.outChNumArray;
+tempObject.outChPatchArray = data.outChPatchArray;
+tempObject.outChColorArray = data.outChColorArray;
+tempObject.patchBool1 = data.patchBool1;
+tempObject.patchBool2 = data.patchBool2;
+
+loadedPatchesArray.push(tempObject);
+
+
+console.log("ABOVE IS PATCH INFO");
+}
+function getSavedPatches(theId){
+    console.log("UID is: " + theId);
+    db.collection('users/' + theId + '/patches').get()
+    .then(function(querySnapshot) {
+
+        loadedPatchesArray = [];
+
+
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log("SUCCESS RECEIVING PATCHES COLLECTEION");
+            console.log(doc.id, " => ", doc.data());
+            loadPatchesArrayFromDatabase(doc.data());
+        });
+
+        console.log("FINISHED FOR LOOP AND THE ARRAY IS " + loadedPatchesArray.length);
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+}
+
+function saveCurrentPatchToDatabase(theId){
+console.log("IN SAVECURRENT FUNCTION");
+//NEED TO INCREMENT PATCH COUNT TOO
+incrementDbPatchCount();
+    var patchesRef = db.collection('users/' + theId + '/patches');
+    var timeRightNow = new Date();
+    var timeString = timeRightNow.toString();
+
+    patchesRef.doc(timeString).set({
+        dateCreated: workingObject.dateCreated,
+        dateModified: timeRightNow,
+        id: timeString,
+        name: workingObject.name,
+        user: userEmail,
+        inputs: workingObject.inputs,
+        outputs: workingObject.outputs,
+        notes: workingObject.notes,
+        inChNumArray: workingObject.inChNumArray,
+        inChNameArray: workingObject.inChNameArray,
+        inChColorArray: workingObject.inChColorArray,
+        inChPatchArray: workingObject.inChPatchArray,
+        inChMicArray: workingObject.inChMicArray,
+        inChStandArray: workingObject.inChStandArray,
+        inChNotesArray: workingObject.inChNotesArray,
+        outChColorArray: workingObject.outChColorArray,
+        outChNameArray:workingObject.outChNameArray,
+        outChNumArray: workingObject.outChNumArray,
+        outChPatchArray: workingObject.outChPatchArray,
+        patchBool1: workingObject.patchBool1,
+        patchBool2: workingObject.patchBool2
+        });
+}
 
 function populateTable(patch){
     let tableRows = "";
@@ -401,8 +498,11 @@ function setupUi(user){
         loggedInLinks.forEach(item => item.style.display = 'inline');
         loggedOutLinks.forEach(item => item.style.display = 'none');
         console.log("DO LOGGED IN UI STUFF", user.email);
-
+        userEmail = user.email;
+        userId = user.uid;
     }else{
+        userId = "";
+        userEmail = "";
         loggedInLinks.forEach(item => item.style.display = 'none');
         loggedOutLinks.forEach(item => item.style.display = 'inline');
         console.log("DO LOGGED OUT UI STUFF");
@@ -435,6 +535,7 @@ logoutButton.onclick = function(){
 
 saveButton.onclick = function(){
 console.log("SAVE BUTT");
+saveCurrentPatchToDatabase(userId);
 };
 optionsExitButton.onclick = function(){
     killModals();
@@ -767,13 +868,19 @@ signupForm.addEventListener('submit', (e) => {
     const password1 = signupForm['signupPassword1Id'].value;
     const password2 = signupForm['signupPassword2Id'].value;
 
+
+    // CREATE USER WITH PATCH COUNT OF 0
     auth.createUserWithEmailAndPassword(email, password1).then(cred => {
-        console.log("SUCCES CREATING USER get uid here" + cred);
-        return db.collection('users').doc(cred.user.uid).set({
-            testField: "testData"
-        })
-    }).then(() => {
-        console.log("FINISHED SETTING USER UID DATA");
+        console.log("SUCCES CREATING USER get uid here" + cred.user.uid);
+        userId = cred.user.uid;
+        usersSavedPatches = 0;
+        var patchesRef = db.collection('users/' + cred.user.uid + '/patchCount');
+        patchesRef.doc("count").set({
+        numberOfSavedPatches: 0
+        });
+
+
+
     });
 
 })
@@ -784,19 +891,51 @@ loginForm.addEventListener('submit', (e) => {
     const password = loginForm['loginPasswordId'].value;
 
     auth.signInWithEmailAndPassword(email, password).then(cred => {
-       console.log(cred.user.uid);
-       // GET USER DOCUMENT HERE
-       return db.collection('users').doc(cred.user.uid).get().then(doc => {
-           console.log("HERE IS RETREIVED DATA: " + doc.data().testField);
-           storePatchToDataBase();
+       console.log("SUCCEESS LOGGING IN" + cred.user.uid);
+       userId = cred.user.uid;
+       // CHEK USER PATCH COUNT HERE
+       
+       db.collection('users/' + cred.user.uid + '/patchCount').get()
+       .then(function(querySnapshot) {
+           querySnapshot.forEach(function(doc) {
+               let countCheck = doc.data();
+                if(countCheck.numberOfSavedPatches>0){
+                console.log("User has more than 0 saved patches..." + countCheck.numberOfSavedPatches);
+                usersSavedPatches = countCheck.numberOfSavedPatches;
+
+
+                getSavedPatches(userId);
+                // LOAD USERS PATCHES HERE!!!!
+                        // db.collection('users/' + cred.user.uid) + '/patches').get().then(function(qSnapshot){
+                        //     qSnapshot.forEach(function(doc) {
+                        //         let p = doc.data();
+                        //         console.log("DOCID: " + doc.id);
+                        //         console.log(p.inChNameArray);
+                        //     })
+                        // })
+
+
+
+
+
+
+
+
+               }else{
+                   //USER HAS NO SAVED PATCHES BUT IS LOGGED IN FINE
+                console.log(doc.id, " => ", doc.data());
+                console.log("USER HAS 0 patches");
+                }
+               
+           });
        })
+       .catch(function(error) {
+           //THROW TO ERROR DIV HERE IF I WANT
+           console.log("Error getting documents: ", error);
+       });
+   
+
+
     });
 })
 
-function storePatchToDataBase(patch){
-    let pRef = db.collection('users').doc('CZwYsfJvwgZTjEuqPma3L2tHnPG3').collection('ppp');
-  let myUser = auth.currentUser.uid;
-console.log(workingObject.dateCreated);
-console.log(myUser + pRef);
-db.collection('users').doc
-}

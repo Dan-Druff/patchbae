@@ -12,8 +12,7 @@ auth.onAuthStateChanged(user => {
    
     if(user){
         setupUi(user);
-       
-      
+   
 
     }else{
         setupUi();
