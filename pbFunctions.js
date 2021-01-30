@@ -781,6 +781,13 @@ blueSortButton.onclick = function(){
         console.log("blue SORT BUTTON toggling on");
     }
 };
+pdfButton.onclick = function(){
+    const doc = new jsPDF();
+
+    doc.text("Hello world!", 10, 10);
+    doc.save("PatchBAE.pdf");
+console.log("CAN YOU BELEIBE THEY PRESSED THE PDF BUTTONN???");
+};
 optionsForm.addEventListener('submit', (e) => {
     e.preventDefault();
 let sessionName = document.getElementById("sessionNameId").value;

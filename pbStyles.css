@@ -1,5 +1,10 @@
 body{
-    background-color: rgb(255, 213, 136);
+    background-color: rgb(214, 214, 214);
+    font-family: 'Montserrat', sans-serif;
+}
+button{
+    font-family: 'Montserrat', sans-serif;
+
 }
 ul{
     list-style-type: none;
@@ -10,11 +15,11 @@ li{
 table{
     width: 100%;
     border: 1px solid black;
-    background-color: violet;
+    background-color: rgb(39, 39, 39);
 }
 th{
     text-align: left;
- 
+ color: whitesmoke;
 }
 td{
  
@@ -23,6 +28,22 @@ td{
 }
 tr{
 
+}
+.titleDiv{
+    text-align: center;
+}
+.navDiv{
+  text-align: right;
+}
+.newSaveDiv{
+    text-align: right;
+}
+.colorSortDiv{
+text-align: center;
+display: none;
+}
+.tableDiv{
+    text-align: center;
 }
 .chCol{
     width: 8%;
@@ -61,7 +82,12 @@ width: 20%;
     top: 10%;
     left: 5%;
     right: 5%;
-    background-color: yellow;
+    background-color: rgb(192, 16, 54);    
+    box-shadow: 10px 10px #444444;
+    padding: 10%;
+    border-color: black;
+border-width: 12px;
+border-radius: 12px;
 }
 .optionsModal{
     z-index: 1;

@@ -79,6 +79,9 @@ const loginDiv = document.getElementById("loginModalId");
 const accountDiv = document.getElementById("accountModalId");
 const savedFileListDiv = document.getElementById("savedFileListId");
 
+const colorSortArea = document.getElementById("colorSortDivId");
+const pdfButton = document.getElementById("getPdfButton");
+
 const newButton = document.getElementById("newButtonId");
 const signupButton = document.getElementById("signupButtonId");
 const loginButton = document.getElementById("loginButtonId");
