@@ -109,7 +109,7 @@ var greenSort = new Patch("green", 0, 0, "green", "");
 var blueSort = new Patch("blue", 0, 0, "blue", "");
 var whiteSort = new Patch("none", 0, 0, "none", "");
 var workingObject = new Patch("working", 0, 0, "", "");
-var sampleObject = new Patch("working", 0, 0, "Welcome", "");
+var sampleObject = new Patch("working", 0, 0, "Select 'NEW' to start", "");
 
 const brown = "#a18948";
 const red = "#f74f4f";

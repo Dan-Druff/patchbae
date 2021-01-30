@@ -17,6 +17,7 @@ sampleObject.outChPatchArray = [1,2,4,4];
 sampleObject.outChNotesArray = ["You", "Are", "So", "Coool"];
 sampleObject.outChNameArray = ["Left", "Right", "Sub", "Fill"];
 
+workingObject.name = "Select New to Begin";
 populateTable(sampleObject);
 
-workingObject = sampleObject;
+// workingObject = sampleObject;

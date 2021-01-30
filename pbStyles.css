@@ -76,6 +76,7 @@ width: 20%;
 }
 .editFormDiv{
     display: none;
+    text-align: center;
 }
 .modal{
     position: absolute;
@@ -92,10 +93,12 @@ border-radius: 12px;
 .optionsModal{
     z-index: 1;
     display: none;
+    text-align: center;
 }
 .confirmModal{
     z-index: 2;
     display: none;
+    text-align: center;
 }
 .errorModal{
     z-index: 3;
