@@ -16,9 +16,34 @@ const tableTop = `
 <thead><tr><th>CH #</th><th>NAME</th><th>PATCH</th><th>MIC/DI</th><th>STAND</th></tr></thead>
 <tbody>
 `;
+const newTableTop = `
+<table id='inputTableId'>
+<caption>INPUTS</caption>
+<colgroup>
+<col span='1' class='chCol'>
+<col span='1' class='nameCol'>
+<col span='1' class='patchCol'>
+<col span='1' class='micCol'>
+<col span='1' class='standCol'>
+</colgroup>
+<thead><tr><th>CH #</th><th>NAME</th><th>PATCH</th><th>MIC/DI</th><th>STAND</th></tr></thead>
+<tbody>
+`;
 const tableBottom = "</tbody></table>";
 const outputTableTop = `
 <br /><table id='outputTableId' onclick='return tableClick(event);'>
+<caption>OUTPUTS</caption>
+<colgroup>
+<col span='1' class='outChCol'>
+<col span='1' class='outNameCol'>
+<col span='1' class='outPatchCol'>
+<col span='1' class='outNotesCol'>
+</colgroup>
+<thead><tr><th>CH #</th><th>NAME</th><th>PATCH</th><th>NOTES</th></tr></thead>
+<tbody>
+`;
+const newOutputTableTop = `
+<br /><table id='outputTableId'>
 <caption>OUTPUTS</caption>
 <colgroup>
 <col span='1' class='outChCol'>
@@ -104,7 +129,7 @@ const loggedOutLinks = document.querySelectorAll('.loggedOut');
 const loggedInLinks = document.querySelectorAll('.loggedIn');
 
 const accountHeader = document.getElementById("accountHeaderId");
-
+const accountExitButt = document.getElementById("accountExitId");
 var brownSort = new Patch("brown", 0, 0, "brown", "");
 var redSort = new Patch("red", 0, 0, "red", "");
 var orangeSort = new Patch("orange", 0, 0, "orange", "");
