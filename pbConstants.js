@@ -77,6 +77,7 @@ yellow:"yellow",
 green:"green",
 blue:"blue",
 white:"white",
+saving:"saving",
 };
 
 const brownButt = document.getElementById("brownId");
@@ -130,13 +131,13 @@ const loggedInLinks = document.querySelectorAll('.loggedIn');
 
 const accountHeader = document.getElementById("accountHeaderId");
 const accountExitButt = document.getElementById("accountExitId");
-var brownSort = new Patch("brown", 0, 0, "brown", "");
-var redSort = new Patch("red", 0, 0, "red", "");
-var orangeSort = new Patch("orange", 0, 0, "orange", "");
-var yellowSort = new Patch("yellow", 0, 0, "yellow", "");
-var greenSort = new Patch("green", 0, 0, "green", "");
-var blueSort = new Patch("blue", 0, 0, "blue", "");
-var whiteSort = new Patch("none", 0, 0, "none", "");
+var brownSort = new Patch("brown", 0, 0, "brown channels", "");
+var redSort = new Patch("red", 0, 0, "red channels", "");
+var orangeSort = new Patch("orange", 0, 0, "orange channels", "");
+var yellowSort = new Patch("yellow", 0, 0, "yellow channels", "");
+var greenSort = new Patch("green", 0, 0, "green channels", "");
+var blueSort = new Patch("blue", 0, 0, "blue channels", "");
+var whiteSort = new Patch("none", 0, 0, "channels with no color", "");
 var workingObject = new Patch("working", 0, 0, "", "");
 var sampleObject = new Patch("working", 0, 0, "Select 'NEW' to start", "");
 
