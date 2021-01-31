@@ -124,7 +124,7 @@ incrementDbPatchCount();
 function populateTable(patch){
     let tableRows = "";
     let outputTableRows = "";
-    let theTitleBar = `<h2>${workingObject.name}</h2>`;
+    let theTitleBar = `<h2>${patch.name}</h2>`;
 console.log("IN POLPULATE TABLE AND COLOR ARRAY IS: " + patch.inChColorArray);
     for(i=0; i<patch.inChNumArray.length; i++){
         tableRows += `
@@ -372,6 +372,7 @@ killModals();
 populateTable(loadedPatchesArray[row]);
 workingObject = loadedPatchesArray[row];
 currentState = appState.patching;
+colorSortArea.style.display = "block";
 return false
 
 }
@@ -601,7 +602,12 @@ logoutButton.onclick = function(){
 
 saveButton.onclick = function(){
 console.log("SAVE BUTT");
-saveCurrentPatchToDatabase(userId);
+currentState = appState.saving;
+let confirmMessage = "<h4>Save Patch?</h4>";
+
+confirmDiv.style.display = "block";
+confirmMessageDiv.innerHTML = confirmMessage;
+
 };
 optionsExitButton.onclick = function(){
     killModals();
@@ -617,7 +623,11 @@ imSureButton.onclick = function(){
         colorSortArea.style.display = "block";
         instructionsDiv.innerHTML = editMessage1;
     }
-
+if(currentState == appState.saving){
+    saveCurrentPatchToDatabase(userId);
+    killModals();
+        currentState = appState.patching;
+}
 
 };
 gotItButton.onclick = function(){
@@ -1056,6 +1066,10 @@ workingObject.outChColorArray.forEach(function(color){
         doc.setTextColor(workingObject.inChColorArray[i]);
         doc.text(workingObject.inChNumArray[i] + " " + workingObject.inChNameArray[i] + " " + tempInColorArray[i] + " " + workingObject.inChPatchArray[i] + " " + workingObject.inChMicArray[i] + " " + workingObject.inChStandArray[i], 10, rowVar);
         rowVar = rowVar + ten;
+        if(rowVar == 280){
+            doc.addPage();
+            rowVar = 10;
+        }
     }
     if (workingObject.outChNumArray.length>0){
         doc.setTextColor('black');
@@ -1068,6 +1082,10 @@ workingObject.outChColorArray.forEach(function(color){
         doc.setTextColor(workingObject.outChColorArray[i]);
         doc.text(workingObject.outChNumArray[i] + " " + workingObject.outChNameArray[i] + " " + tempOutColorArray[i] + " " + workingObject.inChPatchArray[i], 10, rowVar);
         rowVar = rowVar + ten;
+        if(rowVar == 280){
+            doc.addPage();
+            rowVar = 10;
+        }
     }
    
     doc.save("PatchBAE.pdf");
