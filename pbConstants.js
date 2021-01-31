@@ -29,6 +29,10 @@ const outputTableTop = `
 <thead><tr><th>CH #</th><th>NAME</th><th>PATCH</th><th>NOTES</th></tr></thead>
 <tbody>
 `;
+const editMessage1 = "<p>↑ Sort by Color ↑</p><p>↓ Select Channel to Edit ↓</p>";
+const editMessage2 = "<p>↑ Sort by Color ↑</p><hr />";
+
+const instructionsDiv = document.getElementById("instructionsDivId");
 
 const tableDiv = document.getElementById("tableDivId");
 const editBanner = document.getElementById("editHeaderId");

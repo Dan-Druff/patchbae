@@ -129,7 +129,7 @@ console.log("IN POLPULATE TABLE AND COLOR ARRAY IS: " + patch.inChColorArray);
     for(i=0; i<patch.inChNumArray.length; i++){
         tableRows += `
         <tr style='background-color:${patch.inChColorArray[i]}'>
-        <td><form name='channel${i+1}' action='#'><input id='edit${i+1}' type='submit' name='edit' value='${patch.inChNumArray[i]}'></form></td>
+        <td class='tableButtonSection'><form name='channel${i+1}' action='#'><input class='tableButton' id='edit${i+1}' type='submit' name='edit' value='${patch.inChNumArray[i]}'></form></td>
         <td>${patch.inChNameArray[i]}</td>
         <td>${patch.inChPatchArray[i]}</td>
         <td>${patch.inChMicArray[i]}</td>
@@ -144,8 +144,8 @@ if(patch.outChNumArray.length > 0){
     for(o=0; o<patch.outChNumArray.length; o++){
         outputTableRows += `
         <tr style='background-color:${patch.outChColorArray[o]}'>
-        <td><form name='outputChannel${o+1}' action='#'>
-        <input id='outputEdit${o+1}' type='submit' name='outputEdit' value='${patch.outChNumArray[o]}'></form></td>
+        <td class='tableButtonSection'><form name='outputChannel${o+1}' action='#'>
+        <input class='tableButton' id='outputEdit${o+1}' type='submit' name='outputEdit' value='${patch.outChNumArray[o]}'></form></td>
         <td>${patch.outChNameArray[o]}</td>
         <td>${patch.outChPatchArray[o]}</td>
         <td>${patch.outChNotesArray[o]}</td></tr>
@@ -168,6 +168,7 @@ selectedChannel = channelRow.value;
 console.log("Selected Channel " + selectedChannel);
 
 editFormDiv.style.display = "block";
+instructionsDiv.innerHTML = editMessage2;
 
 let formElements = document.querySelectorAll('#editFormId input');
 
@@ -604,6 +605,8 @@ imSureButton.onclick = function(){
         killModals();
         currentState = appState.patching;
         populateTable(workingObject);
+        colorSortArea.style.display = "block";
+        instructionsDiv.innerHTML = editMessage1;
     }
 
 
@@ -619,12 +622,29 @@ whiteSortButton.onclick = function(){
             // TOGGLING COLOR SORT OFF
             colorSortingOn = false;
             populateTable(workingObject);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }else{
             //COMING FROM ANOTHER COLOR SORT COLOR
             selectedColor = white;
             colorSortingOn = true;
             sortPatches();
             populateTable(whiteSort);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "black";
+            whiteSortButton.style.color = "whitesmoke";
+           
         }
         
         
@@ -634,22 +654,49 @@ whiteSortButton.onclick = function(){
         colorSortingOn = true;
         selectedColor = white;
         console.log("WHITE SORT BUTTON toggling on");
+        brownSortButton.style.backgroundColor = "whitesmoke";
+        redSortButton.style.backgroundColor = "whitesmoke";
+        orangeSortButton.style.backgroundColor = "whitesmoke";
+        greenSortButton.style.backgroundColor = "whitesmoke";
+        blueSortButton.style.backgroundColor = "whitesmoke";
+        yellowSortButton.style.backgroundColor = "whitesmoke";
+        whiteSortButton.style.backgroundColor = "black";
+        whiteSortButton.style.color = "whitesmoke";
+   
     }
     
 };
 brownSortButton.onclick = function(){
+ 
     if(colorSortingOn){
 
         if(selectedColor == brown){
             // TOGGLING COLOR SORT OFF
             colorSortingOn = false;
             populateTable(workingObject);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
+        
         }else{
             //COMING FROM ANOTHER COLOR SORT COLOR
             selectedColor = brown;
             colorSortingOn = true;
             sortPatches();
             populateTable(brownSort);
+            brownSortButton.style.backgroundColor = brown;
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }
         
         
@@ -659,6 +706,14 @@ brownSortButton.onclick = function(){
         colorSortingOn = true;
         selectedColor = brown;
         console.log("brown SORT BUTTON toggling on");
+        brownSortButton.style.backgroundColor = brown;
+        redSortButton.style.backgroundColor = "whitesmoke";
+        orangeSortButton.style.backgroundColor = "whitesmoke";
+        greenSortButton.style.backgroundColor = "whitesmoke";
+        blueSortButton.style.backgroundColor = "whitesmoke";
+        yellowSortButton.style.backgroundColor = "whitesmoke";
+        whiteSortButton.style.backgroundColor = "whitesmoke";
+        whiteSortButton.style.color = "black";
     }
 };
 redSortButton.onclick = function(){
@@ -668,12 +723,28 @@ redSortButton.onclick = function(){
             // TOGGLING COLOR SORT OFF
             colorSortingOn = false;
             populateTable(workingObject);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }else{
             //COMING FROM ANOTHER COLOR SORT COLOR
             selectedColor = red;
             colorSortingOn = true;
             sortPatches();
             populateTable(redSort);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = red;
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }
         
         
@@ -683,6 +754,14 @@ redSortButton.onclick = function(){
         colorSortingOn = true;
         selectedColor = red;
         console.log("red SORT BUTTON toggling on");
+        brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = red;
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
     }
 };
 orangeSortButton.onclick = function(){
@@ -690,14 +769,32 @@ orangeSortButton.onclick = function(){
 
         if(selectedColor == orange){
             // TOGGLING COLOR SORT OFF
+            
             colorSortingOn = false;
             populateTable(workingObject);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }else{
             //COMING FROM ANOTHER COLOR SORT COLOR
+
             selectedColor = orange;
             colorSortingOn = true;
             sortPatches();
             populateTable(orangeSort);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = orange;
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }
         
         
@@ -707,6 +804,14 @@ orangeSortButton.onclick = function(){
         colorSortingOn = true;
         selectedColor = orange;
         console.log("orange SORT BUTTON toggling on");
+        brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = orange;
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
     }
 };
 yellowSortButton.onclick = function(){
@@ -716,12 +821,28 @@ yellowSortButton.onclick = function(){
             // TOGGLING COLOR SORT OFF
             colorSortingOn = false;
             populateTable(workingObject);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }else{
             //COMING FROM ANOTHER COLOR SORT COLOR
             selectedColor = yellow;
             colorSortingOn = true;
             sortPatches();
             populateTable(yellowSort);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = yellow;
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }
         
         
@@ -731,6 +852,14 @@ yellowSortButton.onclick = function(){
         colorSortingOn = true;
         selectedColor = yellow;
         console.log("yellow SORT BUTTON toggling on");
+        brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = yellow;
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
     }
 };
 greenSortButton.onclick = function(){
@@ -740,12 +869,28 @@ greenSortButton.onclick = function(){
             // TOGGLING COLOR SORT OFF
             colorSortingOn = false;
             populateTable(workingObject);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }else{
             //COMING FROM ANOTHER COLOR SORT COLOR
             selectedColor = green;
             colorSortingOn = true;
             sortPatches();
             populateTable(greenSort);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = green;
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }
         
         
@@ -755,6 +900,14 @@ greenSortButton.onclick = function(){
         colorSortingOn = true;
         selectedColor = green;
         console.log("green SORT BUTTON toggling on");
+        brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = green;
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
     }
 };
 blueSortButton.onclick = function(){
@@ -764,12 +917,28 @@ blueSortButton.onclick = function(){
             // TOGGLING COLOR SORT OFF
             colorSortingOn = false;
             populateTable(workingObject);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = "whitesmoke";
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }else{
             //COMING FROM ANOTHER COLOR SORT COLOR
             selectedColor = blue;
             colorSortingOn = true;
             sortPatches();
             populateTable(blueSort);
+            brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = blue;
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
         }
         
         
@@ -779,12 +948,119 @@ blueSortButton.onclick = function(){
         colorSortingOn = true;
         selectedColor = blue;
         console.log("blue SORT BUTTON toggling on");
+        brownSortButton.style.backgroundColor = "whitesmoke";
+            redSortButton.style.backgroundColor = "whitesmoke";
+            orangeSortButton.style.backgroundColor = "whitesmoke";
+            greenSortButton.style.backgroundColor = "whitesmoke";
+            blueSortButton.style.backgroundColor = blue;
+            yellowSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.backgroundColor = "whitesmoke";
+            whiteSortButton.style.color = "black";
     }
 };
 pdfButton.onclick = function(){
     const doc = new jsPDF();
+    var rowVar = 30;
+    var ten = 10;
 
-    doc.text("Hello world!", 10, 10);
+let tempInColorArray =[];
+let tempOutColorArray = [];
+workingObject.inChColorArray.forEach(function(color){
+
+switch (color) {
+    case brown:
+        tempInColorArray.push("Brown");
+        break;
+    case red:
+        tempInColorArray.push("Red");
+
+        break;
+    case orange:
+        tempInColorArray.push("Orange");
+
+        break;
+    case yellow:
+        tempInColorArray.push("Yellow");
+
+        break;
+    case green:
+        tempInColorArray.push("Green");
+
+        break;
+    case blue:
+        tempInColorArray.push("Blue");
+
+        break;
+    case white:
+        tempInColorArray.push("");
+
+        break;
+
+    default:
+        break;
+}
+});
+workingObject.outChColorArray.forEach(function(color){
+
+    switch (color) {
+        case brown:
+            tempOutColorArray.push("Brown");
+            break;
+        case red:
+            tempOutColorArray.push("Red");
+    
+            break;
+        case orange:
+            tempOutColorArray.push("Orange");
+    
+            break;
+        case yellow:
+            tempOutColorArray.push("Yellow");
+    
+            break;
+        case green:
+            tempOutColorArray.push("Green");
+    
+            break;
+        case blue:
+            tempOutColorArray.push("Blue");
+    
+            break;
+        case white:
+            tempOutColorArray.push("");
+    
+            break;
+    
+        default:
+            break;
+    }
+    });
+    doc.setFontSize(20);
+    doc.setTextColor('black');
+    doc.text(10, 10, workingObject.name);
+    doc.setFontSize(16);
+    doc.text(10, 20, "Inputs");
+   
+    doc.setFontSize(14);
+    for (i=0; i<workingObject.inChNameArray.length; i++){
+    
+        doc.setTextColor(workingObject.inChColorArray[i]);
+        doc.text(workingObject.inChNumArray[i] + " " + workingObject.inChNameArray[i] + " " + tempInColorArray[i] + " " + workingObject.inChPatchArray[i] + " " + workingObject.inChMicArray[i] + " " + workingObject.inChStandArray[i], 10, rowVar);
+        rowVar = rowVar + ten;
+    }
+    if (workingObject.outChNumArray.length>0){
+        doc.setTextColor('black');
+        doc.setFontSize(16);
+    doc.text(10, rowVar, "Outputs");
+    rowVar = rowVar + ten;
+    }
+    doc.setFontSize(14);
+    for (i=0; i<workingObject.outChNameArray.length; i++){
+        doc.setTextColor(workingObject.outChColorArray[i]);
+        doc.text(workingObject.outChNumArray[i] + " " + workingObject.outChNameArray[i] + " " + tempOutColorArray[i] + " " + workingObject.inChPatchArray[i], 10, rowVar);
+        rowVar = rowVar + ten;
+    }
+   
     doc.save("PatchBAE.pdf");
 console.log("CAN YOU BELEIBE THEY PRESSED THE PDF BUTTONN???");
 };
